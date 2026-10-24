@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="300" viewBox="0 0 640 300" role="img" aria-labelledby="title desc">
+<title id="title">InnoTravel — preview pending</title><desc id="desc">Text-only project placeholder, not a product screenshot.</desc>
+<rect width="640" height="300" rx="8" fill="#14181C"/>
+<path d="M32 32h40M32 264h576" stroke="#C8AA72" stroke-opacity=".6"/>
+<g font-family="Segoe UI,Arial,sans-serif"><text x="606" y="53" text-anchor="end" fill="#62696F" font-size="22">01</text>
+<text x="32" y="114" fill="#A8AAAC" font-size="16" letter-spacing="2">TRAVEL WEB PROJECT</text>
+<text x="30" y="173" fill="#F0EEEA" font-size="44" font-weight="600">InnoTravel</text>
+<text x="32" y="231" fill="#C8AA72" font-size="20">Preview pending</text></g></svg>

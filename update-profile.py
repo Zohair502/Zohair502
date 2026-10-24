@@ -1,6 +1,7 @@
 """Refresh a public-only GitHub statistics card using the standard library."""
 from datetime import datetime, timezone
 from pathlib import Path
+from html import escape
 import json
 import urllib.request
 
@@ -17,29 +18,34 @@ def public_json(path):
         return json.load(response)
 
 
-def render(repositories, timestamp):
-    public = [repo for repo in repositories if not repo.get("private", True)]
+def metrics_for(repositories):
+    public = [repo for repo in repositories if repo.get("private") is False]
     originals = [repo for repo in public if not repo.get("fork", False)]
-    metrics = [
+    return [
         (len(public), "PUBLIC REPOSITORIES"),
         (len(originals), "ORIGINAL REPOSITORIES"),
         (sum(repo["stargazers_count"] for repo in originals), "STARS EARNED"),
         (sum(repo["forks_count"] for repo in originals), "FORKS RECEIVED"),
     ]
+def render(repositories, timestamp, mobile=False):
+    metrics = metrics_for(repositories)
+    timestamp = escape(timestamp)
+    width, height = (480, 330) if mobile else (1000, 220)
     cells = []
     for index, (value, label) in enumerate(metrics):
-        x = 32 + index * 240
-        cells.append(f'<text x="{x}" y="109" fill="#F5F3ED" font-size="40" font-weight="700">{value:,}</text>')
-        cells.append(f'<text x="{x}" y="139" fill="#9AACBF" font-size="11" letter-spacing="1">{label}</text>')
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="202" viewBox="0 0 1000 202" role="img" aria-labelledby="title desc">
+        x = 28 + (index % 2) * 230 if mobile else 32 + index * 240
+        y = 100 + (index // 2) * 100 if mobile else 112
+        cells.append(f'<text x="{x}" y="{y}" fill="#F0EEEA" font-size="44" font-weight="600">{value:,}</text>')
+        cells.append(f'<text x="{x}" y="{y+30}" fill="#A8AAAC" font-size="{12 if mobile else 15}">{label}</text>')
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
 <title id="title">Zohair502 public GitHub statistics</title>
 <desc id="desc">{'; '.join(f'{label}: {value}' for value, label in metrics)}. Refreshed {timestamp}.</desc>
-<rect x="1" y="1" width="998" height="200" rx="16" fill="#0C192B" stroke="#34404D"/>
+<rect x="1" y="1" width="{width-2}" height="{height-2}" rx="8" fill="#14181C" stroke="#303438"/>
 <g font-family="Segoe UI,Arial,sans-serif">
-<text x="32" y="38" fill="#D8B66A" font-size="14" letter-spacing="3">PUBLIC GITHUB / ZOHAIR502</text>
+<text x="28" y="38" fill="#C8AA72" font-size="14" letter-spacing="2">PUBLIC GITHUB / ZOHAIR502</text>
 {''.join(cells)}
-<path d="M32 160H968" stroke="#26374C"/>
-<text x="32" y="184" fill="#8295AC" font-size="12">Public data only · Refreshed {timestamp} · Updates daily</text>
+<path d="M28 {height-58}H{width-28}" stroke="#303438"/>
+<text x="28" y="{height-30}" fill="#9A9EA2" font-size="{12 if mobile else 14}">Updated {timestamp} · Public data only</text>
 </g></svg>'''
 
 
@@ -55,7 +61,10 @@ def main():
             break
         page += 1
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    Path(__file__).with_name("github-stats.svg").write_text(render(repositories, timestamp), encoding="utf-8")
+    root = Path(__file__).parent
+    (root / "github-stats.svg").write_text(render(repositories, timestamp), encoding="utf-8")
+    (root / "assets").mkdir(exist_ok=True)
+    (root / "assets/github-stats-mobile.svg").write_text(render(repositories, timestamp, mobile=True), encoding="utf-8")
     print(f"Updated public statistics from {len(repositories)} repositories")
 
 

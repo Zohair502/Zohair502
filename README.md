@@ -1,57 +1,74 @@
-<p align="center">
-  <img src="./banner.svg" width="100%" alt="Zohair Tariq — AI founder and product builder. Practical AI. Thoughtful products." />
-</p>
+<picture>
+  <source media="(max-width: 600px)" srcset="./assets/hero-mobile.svg" />
+  <img src="./banner.svg" width="100%" alt="Muhammad Zohair Tariq — Build. Automate. Create. Original portrait." />
+</picture>
 
-<p align="center">
-  <a href="https://github.com/Zohair502?tab=repositories">Explore my public work</a>
-  &nbsp;·&nbsp;
-  <a href="https://github.com/Zohair502/Zohair502/commits/main/">Development log</a>
-</p>
+I build AI systems, web products, and games, with a focus on useful software and thoughtful interfaces.
 
-## Building useful things with AI
-
-I'm **Zohair Tariq**, an AI founder and product builder working across business software, web experiences, and games. I enjoy turning complex workflows into products that are clear and useful.
-
-My focus: practical AI, thoughtful interfaces, and the details that make a product work.
+[Selected work](#selected-work) · [Technical stack](#technical-stack) · [Current focus](#current-focus) · [Activity](#contribution-activity)
 
 ## Selected work
 
-| Project | What I'm building | Access |
-| :--- | :--- | :--- |
-| **AI Accounting System** | AI-assisted accounting software for a private client. | **Private client project** · high-level overview only. |
-| **InnoTravel** | A travel web project. | [Public repository](https://github.com/Zohair502/inno-travel-webpage) · implementation has not been published in this repository yet. |
-| **Don't Let It Fall** | A 3D browser game built with Defold and Lua, focused on movement and survival. | **Private source** · public code and play links are not currently listed. |
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://github.com/Zohair502/inno-travel-webpage"><img src="./assets/innotravel.svg" width="100%" alt="InnoTravel — preview pending; text-only placeholder" /></a>
+      <h3>InnoTravel</h3>
+      <p>A travel web project.</p>
+      <p><a href="https://github.com/Zohair502/inno-travel-webpage">Public repository ↗</a><br /><sub>Repository reserved; implementation not published yet.</sub></p>
+    </td>
+    <td width="50%" valign="top">
+      <img src="./assets/accounting.svg" width="100%" alt="AI Accounting System — private client work; preview withheld" />
+      <h3>AI Accounting System</h3>
+      <p>AI-assisted accounting software for a private client.</p>
+      <p><strong>Private client project</strong><br /><sub>Overview only. Source, data, and internal screens stay private.</sub></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="./assets/game-cover.svg" width="100%" alt="Don't Let It Fall — existing project promotional artwork, not a gameplay screenshot" />
+      <h3>Don't Let It Fall</h3>
+      <p>A 3D browser survival game. Keep moving as the platform falls away.</p>
+      <p><strong>Defold · Lua · HTML5</strong><br /><sub>Existing project artwork. Source private; public play link pending.</sub></p>
+    </td>
+    <td width="50%" valign="top">
+      <img src="./assets/automation.svg" width="100%" alt="AI Automation — workflows and integrations; preview pending" />
+      <h3>AI Automation</h3>
+      <p>Practical AI tools and integrations for everyday business workflows.</p>
+      <p><strong>Overview</strong><br /><sub>Public demo and project preview pending.</sub></p>
+    </td>
+  </tr>
+</table>
 
-## Tools I build with
+## Technical stack
 
-<p>
-  <img src="./tech-stack.svg" width="100%" alt="Python, JavaScript, TypeScript, HTML and CSS, SQL, Lua, Defold, Git, and GitHub Actions" />
-</p>
+**Applications** — Python · JavaScript · TypeScript · HTML / CSS · SQL
 
-## On my workbench
+**Games & delivery** — Lua · Defold · Git · GitHub Actions
 
-- **AI & business software** — making complex everyday workflows easier to use.
-- **Web products** — clear interfaces and useful user journeys.
-- **Game development** — responsive controls, progression, and a satisfying retry loop.
+## Current focus
 
-This is a curated view of my work. Client source code, data, and internal details stay private.
+- **Business software:** accounting systems and practical workflow automation.
+- **Don't Let It Fall:** controls, progression, and the retry experience.
+- **This profile:** a curated public record, with daily stats from GitHub's API.
 
-## Public GitHub, at a glance
+## Public GitHub
 
 <a href="https://github.com/Zohair502?tab=repositories">
-  <img src="./github-stats.svg" width="100%" alt="Live public GitHub statistics for Zohair502, refreshed daily by GitHub Actions" />
+  <picture>
+    <source media="(max-width: 600px)" srcset="./assets/github-stats-mobile.svg" />
+    <img src="./github-stats.svg" width="100%" alt="Zohair502 public GitHub statistics; the card includes its last successful refresh time" />
+  </picture>
 </a>
 
-Stats cover public repositories only, including public forks. Stars and forks are totals across public repositories I own, excluding repositories that are themselves forks. The card shows its latest successful refresh time.
+<sub>Public repositories only. Stars and forks count repositories I own that are not forks. Refreshed daily; the timestamp shows the last successful update.</sub>
 
-## A little motion from my contribution graph
+## Contribution activity
 
-<img src="./github-contribution-snake.svg" width="100%" alt="Animated snake tracing Zohair502's GitHub contribution graph" />
+<a href="https://github.com/Zohair502?tab=overview">
+  <img src="./github-contribution-snake.svg" width="100%" alt="Animated snake generated from Zohair502's real GitHub contribution calendar" />
+</a>
 
-<p align="center">
-  <a href="https://github.com/Zohair502/Zohair502/actions/workflows/profile.yml">Profile refresh status</a>
-  &nbsp;·&nbsp;
-  <a href="https://github.com/Zohair502?tab=repositories">Public repositories</a>
-</p>
+<sub>A daily animation of GitHub's contribution calendar. It does not create contributions or represent a score.</sub>
 
-<p align="center"><sub>Practical AI. Thoughtful products. Always building.</sub></p>
+[Public repositories ↗](https://github.com/Zohair502?tab=repositories) · [Profile refresh status ↗](https://github.com/Zohair502/Zohair502/actions/workflows/profile.yml)

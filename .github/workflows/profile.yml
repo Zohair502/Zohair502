@@ -9,6 +9,10 @@ on:
     paths:
       - ".github/workflows/profile.yml"
       - "update-profile.py"
+      - "test_profile.py"
+      - "README.md"
+      - "assets/**"
+      - "banner.svg"
 
 permissions:
   contents: write
@@ -33,12 +37,16 @@ jobs:
       - name: Refresh public GitHub statistics
         run: python update-profile.py
 
+      - name: Test public-only statistics and profile assets
+        run: python -m unittest -v test_profile.py
+
       - name: Generate gold contribution snake
         uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3
         with:
           github_user_name: ${{ github.repository_owner }}
+          github_token: ${{ github.token }}
           outputs: |
-            github-contribution-snake.svg?palette=github-dark&color_snake=%23D8B66A&color_dots=%23101D30,%23374745,%237F714B,%23B39351,%23E4C477
+            github-contribution-snake.svg?palette=github-dark&color_snake=%23C8AA72&color_dots=%2314181C,%233B3930,%236B6048,%239E875D,%23C8AA72
 
       - name: Verify generated SVGs
         run: |
@@ -55,7 +63,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- github-stats.svg github-contribution-snake.svg
+          git add -- github-stats.svg assets/github-stats-mobile.svg github-contribution-snake.svg
           if git diff --cached --quiet; then
             echo "Profile visuals are already up to date."
             exit 0
