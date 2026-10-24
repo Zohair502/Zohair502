@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="144" viewBox="0 0 1000 144" role="img" aria-labelledby="title">
+  <title id="title">Tools: Python, JavaScript, TypeScript, HTML and CSS, SQL, Lua, Defold, Git, GitHub Actions</title>
+  <rect width="1000" height="144" rx="16" fill="#0C192B"/>
+  <g fill="#14263C" stroke="#2D3D50">
+    <rect x="24" y="24" width="164" height="40" rx="8"/><rect x="202" y="24" width="180" height="40" rx="8"/><rect x="396" y="24" width="180" height="40" rx="8"/><rect x="590" y="24" width="180" height="40" rx="8"/><rect x="784" y="24" width="192" height="40" rx="8"/>
+    <rect x="24" y="80" width="164" height="40" rx="8"/><rect x="202" y="80" width="180" height="40" rx="8"/><rect x="396" y="80" width="180" height="40" rx="8"/><rect x="590" y="80" width="386" height="40" rx="8"/>
+  </g>
+  <g fill="#DCC18A" font-family="Segoe UI,Arial,sans-serif" font-size="18" text-anchor="middle">
+    <text x="106" y="50">Python</text><text x="292" y="50">JavaScript</text><text x="486" y="50">TypeScript</text><text x="680" y="50">HTML / CSS</text><text x="880" y="50">SQL</text>
+    <text x="106" y="106">Lua</text><text x="292" y="106">Defold</text><text x="486" y="106">Git</text><text x="783" y="106">GitHub Actions</text>
+  </g>
+</svg>
