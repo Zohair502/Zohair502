@@ -1,0 +1,65 @@
+name: Refresh profile visuals
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/profile.yml"
+      - "update-profile.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-visuals
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh public GitHub statistics
+        run: python update-profile.py
+
+      - name: Generate gold contribution snake
+        uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            github-contribution-snake.svg?palette=github-dark&color_snake=%23D8B66A&color_dots=%23101D30,%23374745,%237F714B,%23B39351,%23E4C477
+
+      - name: Verify generated SVGs
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          for name in ("github-stats.svg", "github-contribution-snake.svg"):
+              path = Path(name)
+              assert path.stat().st_size > 100, f"Empty SVG: {name}"
+              assert ET.parse(path).getroot().tag == "{http://www.w3.org/2000/svg}svg", name
+          PY
+
+      - name: Publish visuals to this profile repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- github-stats.svg github-contribution-snake.svg
+          if git diff --cached --quiet; then
+            echo "Profile visuals are already up to date."
+            exit 0
+          fi
+          git commit -m "Refresh public profile visuals"
+          git pull --rebase origin main
+          git push origin HEAD:main
